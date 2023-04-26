@@ -1,5 +1,5 @@
 import React,{useContext} from "react";
-//import {TransaccionContext} from "../context/TransactionContext";
+import  {TransaccionContext }  from "../context/TransactionContext.jsx";
 import dummyData from "../utils/dummyData";
 import { shortenAddress } from "../utils/shortenAddres";
 import useFetch from "../hooks/useFetch";
@@ -50,17 +50,17 @@ const TransactionCard = ({addressTo, addressFrom, timestamp, message, keyword, a
 }
 
 const Transaccion = () =>{
-   // const {currentAccount} = useContext(TransaccionContext);
+    const {currentAccount, transactions} = useContext(TransaccionContext);
     return(
         <div className="flex w-full justify-center items-center 2xl:px-20 gradient-bg-transactions">
             <div className="flex flex-col md:p-12 py-12 px-4">
-                {/*{currentAccount ? (
+                {currentAccount ? (
                     <h3 className="text-white text-3xl text-center my-2 ">Ultimas Transacciones</h3>
                 ) : (
                     <h3 className="text-white text-3xl text-center my-2 ">Conecte Su Cuenta para ver las ultimas transacciones</h3>    
-                )}*/}
+                )}
                 <div className="flex flex-wrap justify-center items-center mt-10">
-                    {dummyData.reverse().map((transaction,i)=>(
+                    {transaction.reverse().map((transaction,i)=>(
                         <TransactionCard key={i} {...transaction }/>
                     ))}
                 </div>
